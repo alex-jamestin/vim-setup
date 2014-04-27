@@ -25,3 +25,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "bundle/colour-sampler-pack"]
+	path = bundle/colour-sampler-pack
+	url = https://github.com/vim-scripts/Colour-Sampler-Pack.git

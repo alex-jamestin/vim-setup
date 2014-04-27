@@ -14,6 +14,11 @@ set nocompatible
 set t_Co=256
 "set t_Co=0
 
+" pathogen
+let g:pathogen_disabled = [ 'pathogen' ]    " don't load self 
+call pathogen#infect()                      " load everyhting else
+call pathogen#helptags()                    " load plugin help files
+ 
 "colorscheme alexj1_print_bw
 "colorscheme alexj2_SolarizedDark
 "colorscheme alexj2_github
@@ -21,7 +26,7 @@ set t_Co=256
 "colorscheme solarized
 "colorcheme alexj2_tomorrow
 "colorscheme alexj1_summerfruit256
-colorscheme alexj1_print_bw
+"colorscheme alexj1_print_bw
 
 syntax on
 filetype plugin on
@@ -32,12 +37,25 @@ filetype indent on
 " Backspace over everything in insert mode
 set backspace=eol,start,indent
 
+" Hide buffers on switch instead of forcing a save
+set hidden
+set history=1000
+set undolevels=1000
+" Ignore certain file extensions on name completions
+set wildignore=*.swp,*.bak,*.pyc,*.class
 set ruler
-let mapleader = "," 
-set vb					                        " Enable visual bell
-set visualbell t_vb=	                  " Disable both visual and audio bell
+let mapleader = ","
+" Disable visual bell
+set vb
+set noerrorbells
+" Enable autocompletion of vim commands
 set wildmenu
 set wildmode=longest:full,full
+
+set title titlestring=%F
+set laststatus=2                        " Always show status bar
+set statusline=%F%m%r%h%w\ (fmt=%{&ff}\ type=%Y)\ (ascii=\%03.3b\ hex=\%02.2B)\ (line=%04l/%L\ col=%04v\ %p%%)
+hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 
 set autoindent
 " C/C++
@@ -45,10 +63,27 @@ set autoindent
 "set shiftwidth=4	                      " Num columns to indent text for auto-indent, >> or <<
 
 " Egnyte Python
-set expandtab
-set tabstop=4		                        " Num colums to display TAB char as
-set shiftwidth=4	                      " Num columns to indent text for auto-indent, >> or <<
-set softtabstop=4
+if has('autocmd')
+    autocmd filetype python set expandtab
+    " Num colums to display TAB char as
+    autocmd filetype python set tabstop=4
+    " Num columns to indent text for auto-indent, >> or <<
+    autocmd filetype python set shiftwidth=4
+    autocmd filetype python set softtabstop=4
+endif
+
+" Egnyte Python
+" Use the below highlight group when displaying bad whitespace is desired.
+highlight BadWhitespace ctermbg=red guibg=red
+" Display tabs at the beginning of a line in Python mode as bad.
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+" Make trailing whitespace be flagged as bad.
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" Make Vim set out tab characters, trailing whitespace and invisible spaces
+" visually, and additionally use the # sign at the end of lines to mark lines
+" that extend off-screen. For more info, see :h listchars
+set list
+set listchars=tab:>+,trail:+,extends:#,nbsp:+
 
 set smartindent
 "set expandtab
@@ -69,19 +104,6 @@ set ignorecase
 set smartcase	                          " Honor case if first letter is in capitals
 set incsearch
 set gdefault	                          " Default /g flag on all :s substitutions
-
-set title titlestring=%F
-set laststatus=2                        " Always show status bar
-set statusline=%F%m%r%h%w\ (fmt=%{&ff}\ type=%Y)\ (ascii=\%03.3b\ hex=\%02.2B)\ (line=%04l/%L\ col=%04v\ %p%%)
-hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
-
-" Egnyte Python
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Mappings to move windows
 map <C-j> <C-W>j
@@ -117,8 +139,8 @@ autocmd BufReadPost *
 " ---------------------
 let showmarks_enable=0
 " Cscope plugin
-source ~/.vim/plugin/cscope_db.vim
-source ~/.vim/plugin/cscope_maps.vim
+"source ~/.vim/plugin/cscope_db.vim
+"source ~/.vim/plugin/cscope_maps.vim
 map <leader>cs :cs add cscope.out<CR>
 map <leader>s :cs find s
 map <leader>c :cs find c 
@@ -183,18 +205,10 @@ function! ShowColourSchemeName()
     endtry
 endfunction
 
-" pathogen
-let g:pathogen_disabled = [ 'pathogen' ]    " don't load self 
-call pathogen#infect()                      " load everyhting else
-call pathogen#helptags()                    " load plugin help files
- 
 " code folding
 "set foldmethod=indent
 "set foldlevel=2
 "set foldnestmax=4
- 
-" colorpack
-colorscheme vibrantink
  
 " gundo
 nnoremap <F7> :GundoToggle<CR>
