@@ -19,3 +19,9 @@
 [submodule "bundle/scrollColors"]
 	path = bundle/scrollColors
 	url = https://github.com/vim-scripts/ScrollColors.git
+[submodule "bundle/tasklist"]
+	path = bundle/tasklist
+	url = https://github.com/vim-scripts/TaskList.vim.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git

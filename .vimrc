@@ -183,3 +183,28 @@ function! ShowColourSchemeName()
     endtry
 endfunction
 
+" pathogen
+let g:pathogen_disabled = [ 'pathogen' ]    " don't load self 
+call pathogen#infect()                      " load everyhting else
+call pathogen#helptags()                    " load plugin help files
+ 
+" code folding
+"set foldmethod=indent
+"set foldlevel=2
+"set foldnestmax=4
+ 
+" colorpack
+colorscheme vibrantink
+ 
+" gundo
+nnoremap <F7> :GundoToggle<CR>
+ 
+" pep8
+let g:pep8_map='<leader>8'
+ 
+" supertab
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+map <leader>td <Plug>TaskList

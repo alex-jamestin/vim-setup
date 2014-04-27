@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/alexjamestin/Dropbox/5_Code/0_interview/0_AppNexus/screening'
+let g:netrw_dirhist_2='/Users/alexjamestin/Dropbox/5_Code/0_interview/0_AppNexus'
+let g:netrw_dirhist_3='/Users/alexjamestin/Dropbox/5_Code/0_interview'
+let g:netrw_dirhist_4='/Users/alexjamestin/Dropbox/5_Code/0_interview/4_SolidFire'
+let g:netrw_dirhist_5='/home/ajamestin/ws/elc_emc_1.0/module/sync/python/src/modules'
+let g:netrw_dirhist_6='/home/ajamestin/ws/elc_emc_1.0/module/sync/python/src'
+let g:netrw_dirhist_7='/home/ajamestin/ws/elc_emc_1.0/module/sync/python/src/client'
+let g:netrw_dirhist_8='/home/ajamestin/ws/elc_emc_1.0/module/sync/python/src/client/nas'
