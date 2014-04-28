@@ -150,60 +150,19 @@ map <leader>i :cs find i
 
 " Minibuffer Explore Mappings
 let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapWindowNavArrows = 1
 let c_minlines=500
 let c_syntax_for_h=1
 
+map <leader>td <Plug>TaskList
 
-" ---------------------
-" FUNCTIONS
-" ---------------------
+" NERDTree
+map <leader>nt :NERDTreeToggle<cr>
 
-"  COLORSTEPPER changes colorscheme to the "next" color
-"  saves position in global variable
-"  re-obtains list of schemes every time, so new colors will
-"  be automatically added
-"
-function! Step_color()
-	let mycolors = split(globpath(&rtp,"colors/*.vim"),"\n")
-	if exists("g:color_step")
-		let g:color_step += 1
-		if g:color_step > len(mycolors) - 1
-			let g:color_step = 0
-		endif
-	else
-		let g:color_step = 0
-	endif
-	"silent exe 'so ' . mycolors[g:color_step]
-	exe 'so ' . mycolors[g:color_step]
-	echo g:colors_name "\n"
-	unlet mycolors
-endfunction
-
-function! Step_color_back()
-	let mycolors = split(globpath(&rtp,"colors/*.vim"),"\n")
-	if exists("g:color_step")
-		let g:color_step -= 1
-		if g:color_step < 0
-			let g:color_step = len(mycolors) - 1
-		endif
-	else
-		let g:color_step = 5
-	endif
-	silent exe 'so ' . mycolors[g:color_step]
-	unlet mycolors
-endfunction
-
-map <F6> :call Step_color()<CR>
-map <F5> :call Step_color_back()<CR>
-
-function! ShowColourSchemeName()
-    try
-        echo g:colors_name
-    catch /^Vim:E121/
-        echo "default
-    endtry
-endfunction
+"ScrollColors script
+":SCROLL or :COLOR
+map <silent><F5> :PREVCOLOR<cr>
+map <silent><F6> :NEXTCOLOR<cr>
 
 " code folding
 "set foldmethod=indent
@@ -221,4 +180,14 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-map <leader>td <Plug>TaskList
+
+" ---------------------
+" FUNCTIONS
+" ---------------------
+function! ShowColourSchemeName()
+    try
+        echo g:colors_name
+    catch /^Vim:E121/
+        echo "default
+    endtry
+endfunction
