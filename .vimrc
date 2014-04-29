@@ -143,10 +143,10 @@ let showmarks_enable=0
 "source ~/.vim/plugin/cscope_maps.vim
 map <leader>cs :cs add cscope.out<CR>
 map <leader>s :cs find s
-map <leader>c :cs find c 
-map <leader>g :cs find g 
-map <leader>f :cs find f 
-map <leader>i :cs find i 
+map <leader>c :cs find c
+map <leader>g :cs find g
+map <leader>f :cs find f
+map <leader>i :cs find i
 
 " Minibuffer Explore Mappings
 let g:miniBufExplMapWindowNavVim = 1
@@ -173,7 +173,7 @@ map <silent><F6> :NEXTCOLOR<cr>
 nnoremap <F7> :GundoToggle<CR>
  
 " pep8
-let g:pep8_map='<leader>8'
+let g:pep8_map='<leader>p8'
  
 " supertab
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -185,9 +185,11 @@ set completeopt=menuone,longest,preview
 " FUNCTIONS
 " ---------------------
 function! ShowColourSchemeName()
-    try
+    if exists('g:colors_name')
         echo g:colors_name
-    catch /^Vim:E121/
-        echo "default
-    endtry
+    else
+        echo "default"
+    endif
 endfunction
+
+nnoremap <F8> :call ShowColourSchemeName()<CR>
