@@ -105,25 +105,22 @@ set smartcase	                          " Honor case if first letter is in capit
 set incsearch
 set gdefault	                          " Default /g flag on all :s substitutions
 
+map <leader>evim :e ~/.vimrc
+
 " Mappings to move windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Buffers
-map <C-Left> :bp<cr>
-map <C-Right> :bn<cr>
-map [ :bp<cr>
-map ] :bn<cr>
-map <leader>bc :Bclose<cr>
-map <leader>bd :Bdelete<cr>
-
 map z zz
 map n nz
 map N Nz
 map * *z
 map # #z
+
+map <leader>v+ :vertical resize +5<cr>
+map <leader>v- :vertical resize -5<cr>
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -133,6 +130,15 @@ autocmd BufReadPost *
 \   exe "normal g`\"" |
 \ endif
 
+" Buffers
+map <C-Left> :bp<cr>
+map <C-Right> :bn<cr>
+map [ :bp<cr>
+map ] :bn<cr>
+map <leader>bc :Bclose<cr>
+map <leader>bd :Bdelete<cr>
+
+map <leader>evim :e ~/.vimrc<cr>
 
 " ---------------------
 " PLUGIN SPECIFIC THINGS
@@ -154,6 +160,9 @@ let g:miniBufExplMapWindowNavArrows = 1
 let c_minlines=500
 let c_syntax_for_h=1
 
+" Tagslist
+map <leader>to :TlistOpen<cr>
+" Tasklist
 map <leader>td <Plug>TaskList
 
 " NERDTree
@@ -168,18 +177,17 @@ map <silent><F6> :NEXTCOLOR<cr>
 "set foldmethod=indent
 "set foldlevel=2
 "set foldnestmax=4
- 
+
 " gundo
 nnoremap <F7> :GundoToggle<CR>
- 
+
 " pep8
 let g:pep8_map='<leader>p8'
- 
+
 " supertab
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
-
 
 " ---------------------
 " FUNCTIONS
@@ -193,3 +201,4 @@ function! ShowColourSchemeName()
 endfunction
 
 nnoremap <F8> :call ShowColourSchemeName()<CR>
+
