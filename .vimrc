@@ -161,11 +161,15 @@ let c_minlines=500
 let c_syntax_for_h=1
 
 " Tagslist
+let Tlist_Use_Right_Window=0
+let Tlist_WinWidth=40
+let Tlist_Show_Menu=0
 map <leader>to :TlistOpen<cr>
 " Tasklist
 map <leader>td <Plug>TaskList
 
 " NERDTree
+let g:NERDTreeWinPos = "right"
 map <leader>nt :NERDTreeToggle<cr>
 
 "ScrollColors script
