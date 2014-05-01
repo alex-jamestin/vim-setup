@@ -139,6 +139,7 @@ map <C-Left> :bp<cr>
 map <C-Right> :bn<cr>
 map <leader>bc :Bclose<cr>
 map <leader>bd :Bdelete<cr>
+
 " ---------------------
 " PLUGIN SPECIFIC THINGS
 " ---------------------
