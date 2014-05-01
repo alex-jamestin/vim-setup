@@ -130,16 +130,15 @@ autocmd BufReadPost *
 \   exe "normal g`\"" |
 \ endif
 
-" Buffers
-map <C-Left> :bp<cr>
-map <C-Right> :bn<cr>
-map [ :bp<cr>
-map ] :bn<cr>
-map <leader>bc :Bclose<cr>
-map <leader>bd :Bdelete<cr>
-
 map <leader>evim :e ~/.vimrc<cr>
 
+" Buffers
+nnoremap [ :bp<cr>
+nnoremap ] :bn<cr>
+map <C-Left> :bp<cr>
+map <C-Right> :bn<cr>
+map <leader>bc :Bclose<cr>
+map <leader>bd :Bdelete<cr>
 " ---------------------
 " PLUGIN SPECIFIC THINGS
 " ---------------------
