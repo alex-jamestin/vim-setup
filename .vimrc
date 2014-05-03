@@ -19,6 +19,10 @@ let g:pathogen_disabled = [ 'pathogen' ]    " don't load self
 call pathogen#infect()                      " load everyhting else
 call pathogen#helptags()                    " load plugin help files
 
+set guifont=Nimbus\ Mono\ L\ 13
+"set guifont=Courier\ 10\ Pitch\ 12
+
+:colorscheme tcsoft
 "colorscheme alexj1_print_bw
 "colorscheme alexj2_SolarizedDark
 "colorscheme alexj2_github
@@ -161,7 +165,7 @@ function! ShowColourSchemeName()
     endif
 endfunction
 
-nnoremap <F8> :call ShowColourSchemeName()<CR>
+nnoremap <leader>clr :call ShowColourSchemeName()<CR>
 
 " ---------------------
 " PLUGIN SPECIFIC THINGS
